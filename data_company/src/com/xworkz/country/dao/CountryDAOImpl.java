@@ -82,4 +82,27 @@ public class CountryDAOImpl implements CountryDAO{
 			sf.close();
 		}
     }
+	
+	@Override
+	public void deleteId(int id) 
+	{
+		System.out.println("invoked the delete row");
+		System.out.println(id);
+		SessionFactory factory=new Configuration().configure().addAnnotatedClass(CountryEntity.class).buildSessionFactory();
+		if(factory!=null) {
+			Session session=factory.openSession();
+			Transaction transaction=session.beginTransaction();
+			CountryEntity entity=session.get(CountryEntity.class, id);
+			if(entity!=null) {
+				entity.setId(id);
+				session.delete(entity);
+				transaction.commit();
+				System.out.println("delete entity id:"+id);
+			}else {
+				System.out.println("not delete");
+			}
+			session.close();
+		}
+		factory.close();
+	}
 }

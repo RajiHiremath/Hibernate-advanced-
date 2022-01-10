@@ -14,4 +14,7 @@ public interface CompanyDAO {
 	{
 		
 	}
+	default void deleteId(int id) {
+		
+	}
 }

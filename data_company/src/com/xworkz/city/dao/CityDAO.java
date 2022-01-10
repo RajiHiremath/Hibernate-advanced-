@@ -14,4 +14,8 @@ public interface CityDAO
 		{
 			
 		}
+	default void deleteId(int id)
+	{
+		
+	}
 }

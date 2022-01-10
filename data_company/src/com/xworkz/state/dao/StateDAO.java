@@ -13,4 +13,8 @@ public interface StateDAO
 		{
 			
 		}
+		
+		default void deleteId(int id) {
+			
+		}
 }

@@ -13,4 +13,9 @@ public interface CountryDAO
 	{
 		
 	}
+	
+    default void deleteId(int id) 
+    {
+		
+	}
 }

@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
 import com.xworkz.patient.entity.PatientEntity;
 
 public class PatientDAOImpl implements PatientDAO 
@@ -80,4 +81,27 @@ public class PatientDAOImpl implements PatientDAO
 			sf.close();
 		}
     }
+	
+	@Override
+	public void deleteId(int id) 
+	{
+		System.out.println("invoked the delete row");
+		System.out.println(id);
+		SessionFactory factory=new Configuration().configure().addAnnotatedClass(PatientEntity.class).buildSessionFactory();
+		if(factory!=null) {
+			Session session=factory.openSession();
+			Transaction transaction=session.beginTransaction();
+			PatientEntity entity=session.get(PatientEntity.class, id);
+			if(entity!=null) {
+				entity.setId(id);
+				session.delete(entity);
+				transaction.commit();
+				System.out.println("delete entity id:"+id);
+			}else {
+				System.out.println("not delete");
+			}
+			session.close();
+		}
+		factory.close();
+	}
 }

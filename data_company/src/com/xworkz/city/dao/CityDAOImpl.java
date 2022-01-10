@@ -78,10 +78,31 @@ public class CityDAOImpl implements CityDAO
 			{
 				System.out.println("entity not found to update new Population");
 			}
+		}
 			sf.close();
 		}
+		
+		@Override
+		public void deleteId(int id) 
+		{
+			System.out.println("invoked the delete row");
+			System.out.println(id);
+			SessionFactory factory=new Configuration().configure().addAnnotatedClass(CityEntity.class).buildSessionFactory();
+			if(factory!=null) {
+				Session session=factory.openSession();
+				Transaction transaction=session.beginTransaction();
+				CityEntity entity=session.get(CityEntity.class, id);
+				if(entity!=null) {
+					entity.setId(id);
+					session.delete(entity);
+					transaction.commit();
+					System.out.println("delete entity id:"+id);
+				}else {
+					System.out.println("not delete");
+				}
+				session.close();
+			}
+			factory.close();
+		}
     }
-	
-	
 
-}

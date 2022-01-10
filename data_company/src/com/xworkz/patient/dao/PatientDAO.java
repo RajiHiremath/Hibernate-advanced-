@@ -14,4 +14,8 @@ public interface PatientDAO
 		{
 			
 		}
+	
+    default void deleteId(int id) {
+		
+	}
 }
