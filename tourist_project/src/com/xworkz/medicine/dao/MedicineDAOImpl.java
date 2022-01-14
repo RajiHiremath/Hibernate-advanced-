@@ -1,38 +1,35 @@
-package com.xworkz.tour.dao;
+package com.xworkz.medicine.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-import com.xworkz.airport.entity.AirportEntity;
-import com.xworkz.tour.entity.TouristEntity;
+import com.xworkz.medicine.entity.MedicineEntity;
 import com.xworkz.util.EMFUtil;
 
-
-public class TouristDAOImpl implements TouristDAO
+public class MedicineDAOImpl implements MedicineDAO
 {
 
 	@Override
-	public void put(TouristEntity entity) 
+	public void putMedicine(MedicineEntity entity) 
 	{
-	  EntityManagerFactory entityManagerFactory=EMFUtil.getEntityManagerFactory();
-	  EntityManager manager=entityManagerFactory.createEntityManager();
-		EntityTransaction tx=manager.getTransaction();
-		tx.begin();
-		manager.persist(entity);
-		tx.commit();
-		tx.rollback();
+		EntityManagerFactory entityManagerFactory=EMFUtil.getEntityManagerFactory();
+		  EntityManager manager=entityManagerFactory.createEntityManager();
+		  EntityTransaction tx=manager.getTransaction();
+		  tx.begin();
+		  manager.persist(entity);
+		  tx.commit();
 		
 	}
 
 	@Override
-	public void addAll(List<TouristEntity> entities) 
+	public void addAll(List<MedicineEntity> entities)
 	{
 		EntityManager manager = EMFUtil.getEntityManagerFactory().createEntityManager();
-		for (TouristEntity touristEntity : entities) {
-			manager.persist(touristEntity);
+		for (MedicineEntity medicineEntity : entities) 
+		{
+			manager.persist(medicineEntity);
 
 			EntityTransaction transaction = manager.getTransaction();
 
@@ -40,7 +37,7 @@ public class TouristDAOImpl implements TouristDAO
 			int flushcount = 0;
 
 			try {
-				for (int i = 0; i < 49; i++) {
+				for (int i = 0; i < 35; i++) {
 					if (flushcount ==10) {
 						manager.flush();
 						flushcount = 0;
@@ -59,7 +56,5 @@ public class TouristDAOImpl implements TouristDAO
 		}
 		
 	}
-	
-	
 
 }
