@@ -7,9 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 @Entity
 @Table(name="web_table")
+@NamedQueries({
+	@NamedQuery(name="getByNameXworkz",
+	query="select web from WebsiteEntity web where web.name='Xworkz'"),
+	@NamedQuery(name="getByLikeUrlX",
+	query="select web from WebsiteEntity web where web.url like='www.x%'"),
+	@NamedQuery(name="getByMinSince",
+	query="select MIN(since) as since from WebsiteEntity group by since"),
+	@NamedQuery(name="getByMaxSince",
+	query="select MAX(since) as since from WebsiteEntity group by since"),
+	@NamedQuery(name="getBySecondMinSince",
+	query="select secondMIN(since) as since from WebsiteEntity group by since"),
+	@NamedQuery(name="getBySecondMaxSince",
+	query="select secondMAX(since) as since from WebsiteEntity group by since ")
+	
+})
 public class WebsiteEntity implements Serializable
 {
 	@Id
