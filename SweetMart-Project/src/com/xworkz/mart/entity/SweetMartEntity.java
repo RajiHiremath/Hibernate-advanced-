@@ -1,14 +1,12 @@
 package com.xworkz.mart.entity;
-
 import java.io.Serializable;
-
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +19,6 @@ import lombok.ToString;
 @Getter
 @Entity
 @Table(name="sweetmart_table")
-
 public class SweetMartEntity implements Serializable
 {
   @Id
@@ -56,11 +53,18 @@ public class SweetMartEntity implements Serializable
   private boolean homeDelivery;
   @Column(name="serviceCharge")
   private boolean serviceCharge;
-
-  public SweetMartEntity(String name, String ownerName, double phoneNo, double alternativeNo, String email, String address,
-		double started, int noOfWorkers, String openTime, String closeTime, String areaOfManufacture, String quality,
-		boolean homeDelivery, boolean serviceCharge) 
-{
+  @Column(name="s_createdBy")
+  private String createdBy;
+  @Column(name="s_createdAT")
+  private LocalDateTime  createdAT;
+  @Column(name="s_updatedBy")
+  private String updatedBy;
+  @Column(name="s_updatedAt")
+  private LocalDateTime  updatedAt;
+public SweetMartEntity(String name, String ownerName, double phoneNo, double alternativeNo, String email,
+		String address, double started, int noOfWorkers, String openTime, String closeTime, String areaOfManufacture,
+		String quality, boolean homeDelivery, boolean serviceCharge, String createdBy, LocalDateTime createdAT,
+		String updatedBy, LocalDateTime updatedAt) {
 	super();
 	this.name = name;
 	this.ownerName = ownerName;
@@ -76,8 +80,15 @@ public class SweetMartEntity implements Serializable
 	this.quality = quality;
 	this.homeDelivery = homeDelivery;
 	this.serviceCharge = serviceCharge;
-   }
-  
+	this.createdBy = createdBy;
+	this.createdAT = createdAT;
+	this.updatedBy = updatedBy;
+	this.updatedAt = updatedAt;
+	
+	
+}
+
+ 
   
  }
 
