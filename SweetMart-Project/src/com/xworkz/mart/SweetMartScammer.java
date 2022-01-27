@@ -27,25 +27,25 @@ public class SweetMartScammer {
                 9483764400d, "www.mishrapedha@kpl.com", "Islampur circle,Koppal", 
                 2012, 5, "7:00 AM", "10:00 PM", " C.B.T Hubli", "Best", true, true,"Praneet" ,LocalDateTime.now(),"Pranu",LocalDateTime.now());
 		
-		SweetMartEntity entity5=new SweetMartEntity("Mishra Pedha-Hospete", "Manju", 7202208648d, 
+		SweetMartEntity entity5=new SweetMartEntity("Mishra Pedha-Koppal","Manju M", 7202208648d, 
                 9483764414d, "www.gvtmishrapedha@hpt.com", "Gandhi circle,Hospete", 
-                2012, 5, "7:30 AM", "90:00 PM", " C.B.T Hubli", "Best", true, true,"Poorvik",LocalDateTime.now(),"Proovi",LocalDateTime.now());
+                2012, 5, null, "09:00 PM", " C.B.T Hubli", "Best", true, true,"Poorvik",LocalDateTime.now(),"Proovi",LocalDateTime.now());
 		
 		
 		
-		SweetMartDAO dao=new SweetMartDAOImpl();
-		dao.save(entity5);
-		dao.save(entity4);
-		dao.save(entity3);
-		dao.save(entity2);
-		dao.save(entity1);
+	SweetMartDAO dao=new SweetMartDAOImpl();
+//		dao.save(entity5);
+//		dao.save(entity4);
+//		dao.save(entity3);
+//		dao.save(entity2);
+//		dao.save(entity1);
 		
 		SweetMartService service=new SweetMartServiceImpl(dao);
 		service.validationAndSave(entity5);
-		service.validationAndSave(entity4);
-		service.validationAndSave(entity3);
-		service.validationAndSave(entity2);
-		service.validationAndSave(entity1);
+//		service.validationAndSave(entity4);
+//		service.validationAndSave(entity3);
+//		service.validationAndSave(entity2);
+//		service.validationAndSave(entity1);
 		
 	}
 

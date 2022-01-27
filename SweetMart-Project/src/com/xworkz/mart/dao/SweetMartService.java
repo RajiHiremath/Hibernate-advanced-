@@ -4,5 +4,5 @@ import com.xworkz.mart.entity.SweetMartEntity;
 
 public interface SweetMartService 
 {
-  public void validationAndSave(SweetMartEntity entity);
+  public boolean validationAndSave(SweetMartEntity entity);
 }
